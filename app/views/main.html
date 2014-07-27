@@ -1,0 +1,88 @@
+<div id="top">
+  <div class="container">
+    <div class="row">
+      <div class="col-sm-12 text-center">
+        <h1>
+          Ruzbeh Kheirabi<br>
+          <small>March 20th, 1979 - July 21st, 2014</small>
+        </h1>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div id="">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-4 col-md-offset-4">
+        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse condimentum metus in nulla suscipit pellentesque. Duis mollis iaculis malesuada. Nullam et nibh auctor, faucibus enim ac, accumsan augue. Quisque nec feugiat eros. Donec placerat sit amet urna a ornare. Nulla dapibus risus purus, eget elementum urna ornare ut. Curabitur porttitor scelerisque felis, id molestie nisi.</p>
+
+        <hr>
+
+        <form role="form" ng-submit="lightCandle()" ng-cloak>
+          <!-- <p class="text-muted" ng-show-auth="login">
+            <small>
+              Hi, <strong>{{auth.user.thirdPartyUserData.first_name}}</strong> &middot;
+              <a href="#/logout" ng-click="logout($event)">logout</a>
+            </small>
+          </p> -->
+
+          <div ng-hide="candleLit">
+            <div class="form-group">
+              <input class="form-control" placeholder="Your name" required
+                ng-model="from">
+            </div>
+            <div class="form-group">
+              <textarea rows="4" class="form-control" placeholder="Your message"
+                ng-disabled="!from"
+                ng-model="note"></textarea>
+            </div>
+
+            <div class="submit">
+              <button type="button" class="btn btn-sm btn-block btn-primary"
+                ng-disabled="!from"
+                ng-click="lightCandle()">Light a candle for Ruzbeh</button>
+            </div>
+          </div>
+
+          <div class="text-muted" ng-show="candleLit">
+            Thank you {{from}}<br>
+            <a href="#again" ng-click="lightAnother($event)">Light another?</a>
+          </div>
+        </form>
+        <br>
+
+        <!-- <p class="text-muted text-center" ng-cloak>
+          <small ng-show-auth="logout">
+            If you would also like to leave a personal note,<br>
+            <a href="#/login" ng-click="login($event, 'facebook')">login with facebook</a> first.
+          </small>
+        </p> -->
+
+        <div ng-show="err" class="alert alert-danger"><strong>{{err}}</strong></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div id="candles">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-4 col-md-offset-4">
+        <div class="candle-wrapper"
+          ng-repeat="entry in entries"
+          ng-class="{'mine':isMine(entry)}"
+          ng-style="{'z-index':entry.candle.type, '-webkit-filter':'blur(' + (9 - entry.candle.type) * 0.25 + 'px)'}">
+
+          <div class="candle candle-{{entry.candle.type}}"
+            tooltip-append-to-body="true"
+            tooltip-placement="top"
+            tooltip-html-unsafe="{{entry.note}} <br><strong>{{entry.from}}</strong>">
+            <img ng-src="/images/flame-{{entry.candle.flame}}.gif">
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+

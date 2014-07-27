@@ -1,0 +1,82 @@
+$icon-font-path: "/bower_components/sass-bootstrap/fonts/";
+
+$tooltip-color: #666;
+$tooltip-bg: #fefefe;
+$tooltip-max-width: 400px;
+
+@import 'sass-bootstrap/lib/bootstrap';
+
+.browsehappy {
+  margin: 0.2em 0;
+  background: #ccc;
+  color: #000;
+  padding: 0.2em 0;
+}
+
+body {
+  padding-top: 20px;
+  padding-bottom: 20px;
+  background-color: #000;
+  color: #fefefe;
+}
+
+strong {
+  font-weight: bold;
+}
+
+h1, h2, h3 {
+  font-family: 'Sorts Mill Goudy', serif;
+  font-weight: 400;
+}
+
+.tooltip-inner {
+  max-width: 300px;
+  text-align: left !important;
+}
+
+#candles {
+  position: relative;
+  margin: 40px auto;
+  background-color: #000;
+  text-align: center;
+
+  .candle-wrapper {
+    display: inline-block;
+    position: relative;
+    // float: left;
+    // width: 25px;
+    margin-bottom: 15px;
+    // filter: blur(3px);
+
+    .candle {
+      position: relative;
+      vertical-align: bottom;
+      display: inline-block;
+      text-align: center;
+      background-color: transparent;
+      background-image: url(/images/candles.gif);
+      background-repeat: no-repeat;
+    }
+
+    &.mine {
+      // filter: saturate(8);
+      // filter: hue-rotate(45deg);
+      // filter: blur(0);
+    }
+  }
+
+  .candle-1 { width: 36px; height: 100px; margin-top: 22px; background-position: -2px bottom; }
+  .candle-2 { width: 44px; height: 82px;  margin-top: 40px; background-position: -40px bottom; }
+  .candle-3 { width: 45px; height: 122px; margin-top: 0;    background-position: -85px bottom; }
+  .candle-4 { width: 50px; height: 112px; margin-top: 10px; background-position: -136px bottom; }
+  .candle-5 { width: 38px; height: 120px; margin-top: 2px;  background-position: -190px bottom; }
+  .candle-6 { width: 59px; height: 89px;  margin-top: 33px; background-position: -231px bottom; }
+  .candle-7 { width: 39px; height: 76px;  margin-top: 46px; background-position: -291px bottom; }
+  .candle-8 { width: 44px; height: 119px; margin-top: 3px;  background-position: -335px bottom; }
+}
+
+
+
+
+
+
