@@ -19,7 +19,8 @@
   "trailing": true,
   "smarttabs": true,
   "globals": {
-    "angular": false
+    "_": false,
+    "angular": false,
     "Firebase": false
   }
 }

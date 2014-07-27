@@ -1,25 +1,84 @@
-<div ng-cloak>
-  <div ng-show-auth="login">
-    Hi, <strong>{{auth.user.displayName}}</strong> |
-    <a href="#/logout" ng-click="logout($event)">logout</a>
+<div id="top">
+  <div class="container">
+    <div class="row">
+      <div class="col-sm-12 text-center">
+        <h1>
+          Ruzbeh Kheirabi<br>
+          <small>1980-2014</small>
+        </h1>
+      </div>
+    </div>
   </div>
-
-  <button class="btn btn-sm btn-primary" ng-click="login('facebook')" ng-show-auth="logout">Login with Facebook</button>
-
-  <div ng-show="err" class="alert alert-danger"><strong>{{err}}</strong></div>
 </div>
 
-<div id="form" ng-show-auth="login">
-  <form ng-submit="lightCandle()">
-    <textarea ng-model="candle"></textarea>
-    <button type="submit">Submit</button>
-  </form>
+<div id="">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-4 col-md-offset-4">
+        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse condimentum metus in nulla suscipit pellentesque. Duis mollis iaculis malesuada. Nullam et nibh auctor, faucibus enim ac, accumsan augue. Quisque nec feugiat eros. Donec placerat sit amet urna a ornare. Nulla dapibus risus purus, eget elementum urna ornare ut. Curabitur porttitor scelerisque felis, id molestie nisi.</p>
+
+        <hr>
+
+        <form role="form" ng-submit="lightCandle()" ng-cloak>
+          <p class="text-muted" ng-show-auth="login">
+            <small>
+              Hi, <strong>{{auth.user.thirdPartyUserData.first_name}}</strong> &middot;
+              <a href="#/logout" ng-click="logout($event)">logout</a>
+            </small>
+          </p>
+          <div ng-show-auth="login">
+            <div class="form-group">
+              <textarea rows="4" class="form-control" placeholder="Personal message..." ng-model="candle.note"></textarea>
+            </div>
+            <div class="checkbox">
+              <label>
+                Private?
+                <input type="checkbox" ng-model="isPrivate">
+              </label>
+            </div>
+          </div>
+
+          <div class="text-center">
+            <button type="button" class="btn btn-sm btn-primary" ng-click="lightCandle()">Light a candle</button>
+          </div>
+        </form>
+        <br>
+
+        <p class="text-muted text-center" ng-cloak>
+          <small ng-show-auth="logout">
+            If you would also like to leave a personal note,<br>
+            <a href="#/login" ng-click="login($event, 'facebook')">login with facebook</a> first.
+          </small>
+        </p>
+
+        <div ng-show="err" class="alert alert-danger"><strong>{{err}}</strong></div>
+      </div>
+
+      <!-- https://scontent-a-iad.xx.fbcdn.net/hphotos-xfp1/t1.0-9/10552423_10103077820734379_5745561849894802884_n.jpg -->
+    </div>
+  </div>
 </div>
 
 <div id="candles">
-  <div class="candle-wrapper" ng-repeat="candle in candles">
-    <div class="candle candle-1">
-      <img src="/images/flame-1.gif">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-8 col-md-offset-2">
+        <div class="candle-wrapper"
+          ng-repeat="entry in entries"
+          ng-class="{'mine':isMine(entry)}"
+          ng-style="{'z-index':entry.candle.type, '-webkit-filter':'blur(' + (9 - entry.candle.type) * 0.25 + 'px)'}">
+          <div class="candle candle-{{entry.candle.type}}" ng-if="!shouldShowTooltip(entry)">
+            <img ng-src="/images/flame-{{entry.candle.flame}}.gif">
+          </div>
+
+          <div class="candle candle-{{entry.candle.type}}" ng-if="shouldShowTooltip(entry)"
+            tooltip-append-to-body="true"
+            tooltip-placement="top"
+            tooltip="{{entry.candle.note}} -{{entry.from.thirdPartyUserData.first_name}}">
+            <img ng-src="/images/flame-{{entry.candle.flame}}.gif">
+          </div>
+        </div>
+      </div>
     </div>
   </div>
 </div>

@@ -1,5 +1,9 @@
 $icon-font-path: "/bower_components/sass-bootstrap/fonts/";
 
+$tooltip-color: #666;
+$tooltip-bg: #fefefe;
+$tooltip-max-width: 400px;
+
 @import 'sass-bootstrap/lib/bootstrap';
 
 .browsehappy {
@@ -10,35 +14,51 @@ $icon-font-path: "/bower_components/sass-bootstrap/fonts/";
 }
 
 body {
+  font-family: 'Open Sans', sans-serif;
   padding-top: 20px;
   padding-bottom: 20px;
   background-color: #000;
   color: #fefefe;
 }
 
+h1, h2, h3 {
+  font-family: 'Lobster', cursive;
+  font-weight: 400;
+}
+
+.tooltip-inner {
+  width: 300px;
+  text-align: left !important;
+}
+
 #candles {
   position: relative;
-  margin: 0 auto;
-  clear: left;
+  margin: 40px auto;
+  background-color: #000;
+  text-align: center;
 
   .candle-wrapper {
-    float: left;
+    display: inline-block;
+    position: relative;
+    // float: left;
+    width: 25px;
     margin-bottom: 15px;
-    margin-left: 1px;
-    margin-right: 1px;
+    // filter: blur(3px);
 
     .candle {
-      float: left;
+      position: relative;
+      vertical-align: bottom;
+      display: inline-block;
       text-align: center;
       background-color: transparent;
       background-image: url(/images/candles.gif);
       background-repeat: no-repeat;
-      // cursor: pointer;
-      // opacity: .7;
+    }
 
-      &:hover {
-        opacity: 1;
-      }
+    &.mine {
+      // filter: saturate(8);
+      // filter: hue-rotate(45deg);
+      // filter: blur(0);
     }
   }
 
