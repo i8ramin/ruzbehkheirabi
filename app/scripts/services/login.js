@@ -1,19 +1,21 @@
 'use strict';
 angular.module('angularfire.login', ['firebase', 'angularfire.firebase'])
 
-  .run(function(simpleLogin) {
+  .run(function($rootScope, simpleLogin) {
     simpleLogin.init();
   })
 
   .factory('simpleLogin', function($rootScope, $firebaseSimpleLogin, firebaseRef, $timeout) {
+    var auth = null;
+
     function assertAuth() {
-      if( auth === null ) { throw new Error('Must call loginService.init() before using its methods'); }
+      if (auth === null) { throw new Error('Must call loginService.init() before using its methods'); }
     }
 
-    var auth = null;
     return {
       init: function() {
         auth = $firebaseSimpleLogin(firebaseRef());
+        $rootScope.auth = auth;
         return auth;
       },
 
@@ -30,7 +32,7 @@ angular.module('angularfire.login', ['firebase', 'angularfire.firebase'])
       login: function(provider, callback) {
         assertAuth();
         auth.$login(provider, {rememberMe: true}).then(function(user) {
-          if( callback ) {
+          if (callback) {
             //todo-bug https://github.com/firebase/angularFire/issues/199
             $timeout(function() {
               callback(null, user);
@@ -38,7 +40,5 @@ angular.module('angularfire.login', ['firebase', 'angularfire.firebase'])
           }
         }, callback);
       }
-
-
     };
   });
