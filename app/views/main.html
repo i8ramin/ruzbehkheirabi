@@ -1,37 +1,33 @@
 <div id="top">
   <div class="container">
     <div class="row">
-      <div class="col-md-4 col-md-offset-1 info">
+      <div class="col-sm-4 col-sm-offset-2 info">
         <h1>
           Ruzbeh Kheirabi<br>
           <small>March 1979 - July 2014</small>
         </h1>
-        <p>“Out beyond ideas of wrongdoing
-        and rightdoing there is a field.
-        I'll meet you there.<br><br>
+        <div class="quote">
+          <p>
+            “Out beyond ideas of wrongdoing
+            and rightdoing there is a field.
+            I'll meet you there.<br><br>
 
-        When the soul lies down in that grass
-        the world is too full to talk about.”<br>
-        <strong>Rumi</strong>
-        </p>
+            When the soul lies down in that grass
+            the world is too full to talk about.”<br>
+            <strong>Rumi</strong>
+          </p>
+        </div>
 
         <br>
 
         <form id="form" role="form" ng-submit="lightCandle()">
-          <!-- <p class="text-muted" ng-show-auth="login">
-            <small>
-              Hi, <strong>{{auth.user.thirdPartyUserData.first_name}}</strong> &middot;
-              <a href="#/logout" ng-click="logout($event)">logout</a>
-            </small>
-          </p> -->
-
           <div ng-hide="candleLit">
             <div class="form-group">
               <input class="form-control" placeholder="Your name" required
                 ng-model="from">
             </div>
             <div class="form-group">
-              <textarea rows="4" class="form-control" placeholder="Your message"
+              <textarea rows="3" class="form-control" placeholder="Your message"
                 ng-disabled="!from"
                 ng-model="note"></textarea>
             </div>
@@ -48,8 +44,13 @@
             <a href="#again" ng-click="lightAnother($event)">Light another?</a>
           </div>
         </form>
+
+        <div class="well family-message">
+          In lieu of flowers, Ruzbeh's family would appreciate donations
+          to the <a href="https://childfoundation.wufoo.com/forms/one-time-donation/">Child Foundation</a> in his honor. Thank you.
+        </div>
       </div>
-      <div class="col-md-5 photo">
+      <div class="col-sm-5 photo">
         <img src="/images/ruzbeh.jpg">
       </div>
     </div>
@@ -59,7 +60,7 @@
 <div id="candles">
   <div class="container">
     <div class="row">
-      <div class="col-md-4 col-md-offset-4">
+      <div class="col-md-9 col-md-offset-2">
         <div class="candle-wrapper"
           ng-repeat="entry in entries | orderBy:timestamp:true"
           ng-style="{'z-index':entry.candle.type, '-webkit-filter':'blur(' + (5 - entry.candle.type) * 0.25 + 'px)'}">

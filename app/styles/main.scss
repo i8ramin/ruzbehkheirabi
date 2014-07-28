@@ -4,12 +4,14 @@ $tooltip-color: #666;
 $tooltip-bg: #fefefe;
 $tooltip-max-width: 400px;
 
-$input-bg: #222;
-$input-bg-disabled: #232323;
+$input-bg: #333;
+$input-bg-disabled: #323232;
 $input-color: #eee;
 $input-border: transparent;
-$input-border-radius: 0;
+// $input-border-radius: 0;
 $input-border-focus: #444;
+
+$well-bg: #121212;
 
 @import 'sass-bootstrap/lib/bootstrap';
 
@@ -43,14 +45,24 @@ h1, h2, h3 {
 
 #top {
   .info {
-    margin-top: 30px;
-    margin-bottom: 30px;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    box-shadow: inset 0 0 30px 30px rgba(0,0,0, 1);
+    background: transparent url(/images/butterfly.gif) no-repeat 230% -30px;
+  }
+  .quote {
+    padding-right: 100px;
+    text-shadow: 1px 1px #000;
   }
   .photo {
     img {
       width: 100%;
-      border-radius: 10px;
+      border-radius: 6px;
     }
+  }
+
+  .family-message {
+    margin-top: 15px;
   }
 }
 
