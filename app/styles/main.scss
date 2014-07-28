@@ -4,6 +4,13 @@ $tooltip-color: #666;
 $tooltip-bg: #fefefe;
 $tooltip-max-width: 400px;
 
+$input-bg: #222;
+$input-bg-disabled: #232323;
+$input-color: #eee;
+$input-border: transparent;
+$input-border-radius: 0;
+$input-border-focus: #444;
+
 @import 'sass-bootstrap/lib/bootstrap';
 
 .browsehappy {
@@ -34,9 +41,22 @@ h1, h2, h3 {
   text-align: left !important;
 }
 
+#top {
+  .info {
+    margin-top: 30px;
+    margin-bottom: 30px;
+  }
+  .photo {
+    img {
+      width: 100%;
+      border-radius: 10px;
+    }
+  }
+}
+
 #candles {
   position: relative;
-  margin: 40px auto;
+  margin: 60px auto;
   background-color: #000;
   text-align: center;
 

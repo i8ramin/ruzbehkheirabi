@@ -5,13 +5,13 @@ angular.module('ruzbehkheirabiApp').controller('MainCtrl', function ($scope, sim
   $scope.entries = CandleService;
 
   $scope.lightCandle = function () {
-    debugger;
     $scope.entries.$add({
       from: $scope.from,
       candle: {
         type: (Math.floor(Math.random() * 8) + 1),
         flame: (Math.floor(Math.random() * 5) + 1)
       },
+      timestamp: (new Date()).getTime(),
       note: $scope.note || ''
     });
 
